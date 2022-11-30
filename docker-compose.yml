@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: './cinema_sauro/'
+    volumes:
+      - ./cinema_sauro:/app
+    container_name: cinema_sauro
+    ports:
+      - "8000:8000"
+    network_mode: "host"
+  frontend:
+    build:
+      context: './cinema_front/'
+    volumes:
+      - ./cinema_front:/app
+    container_name: cinema_front
+    ports:
+      - "3000:3000"
+    network_mode: "host"
