@@ -53,7 +53,7 @@ class ItemLanchonete(models.Model):
 class Compra(models.Model):
     id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
     cpf_cliente = models.ForeignKey(Cliente,  on_delete=models.CASCADE)  
-    data = models.DateField(auto_now=False)
+    data = models.DateField(auto_now=True)
 
 class CompraIngressos(models.Model):
     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
