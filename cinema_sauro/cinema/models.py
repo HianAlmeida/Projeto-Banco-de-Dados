@@ -42,8 +42,8 @@ class Ingresso(models.Model):
     data = models.DateField(auto_now=False)
 
 class Cliente(models.Model):
-    cpf  = models.CharField(primary_key=True, null=False)
-    nome = models.CharField(null=False)
+    cpf  = models.CharField(primary_key=True, null=False, max_length=250)
+    nome = models.CharField(null=False, max_length=250)
 
 class ItemLanchonete(models.Model):
     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
