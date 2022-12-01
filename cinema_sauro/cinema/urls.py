@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import createView, cadastrar_filme, cadastrar_atuacao, cadastrar_sala, cadastrar_ingresso
+from .views import *
 
 
 
@@ -10,4 +10,6 @@ urlpatterns = [
     path('cadastrar_sala', cadastrar_sala),
     path('cadastrar_ingresso', cadastrar_ingresso)
 
+    path('cadastrar_cronograma', cadastrar_cronograma),
+    path('cadastrar_compra', cadastrar_compra)
 ]
