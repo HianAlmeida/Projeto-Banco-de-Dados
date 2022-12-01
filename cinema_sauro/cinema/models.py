@@ -34,36 +34,34 @@ class Atuacao(models.Model):
 #     # horario_inicio = 
 #     # horario_final = 
 
-# class Ingresso(models.Model):
-#     id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
-#     valor = models.FloatField(null=False)
-#     categorial = models.CharField(null=False, max_length=255)
-#     id_cronograma = models.ForeignKey(Cronograma,  on_delete=models.CASCADE)  
-#     # data = 
-    
+class Ingresso(models.Model):
+    id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    valor = models.FloatField(null=False)
+    categoria = models.CharField(null=False, max_length=255)
+    id_cronograma = models.ForeignKey(Cronograma, null=False, on_delete=models.CASCADE)  
+    data = models.DateField(auto_now=False)
+
+class Cliente(models.Model):
+    cpf  = models.CharField(primary_key=True, null=False)
+    nome = models.CharField(null=False)
+
+class ItemLanchonete(models.Model):
+    id = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    nome = models.CharField(null=False, max_length=255)
+    valor = models.FloatField(null=False)
+
+class Compra(models.Model):
+    id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    cpf_cliente = models.ForeignKey(Cliente,  on_delete=models.CASCADE)  
+    data = models.DateField(auto_now=False)
+
+class CompraIngressos(models.Model):
+    id = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    id_compra = models.ForeignKey(Compra,  on_delete=models.CASCADE)
+    id_ingresso = models.ForeignKey(Ingresso,  on_delete=models.CASCADE)
 
 
-# # class Cliente(models.Model):
-# #     cpf  = models.CharField(primary_key=True, null=False)
-# #     nome = models.CharField(null=False)
-
-# class ItemLanchonete(models.Model):
-#     id = id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
-#     nome = models.CharField(null=False, max_length=255)
-#     valor = models.FloatField(null=False)
-
-# # class Compra(models.Model):
-# #     id = id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
-# #     cpf_cliente = models.ForeignKey(Cliente,  on_delete=models.CASCADE)  
-# #     # data = 
-
-# class CompraIngressos(models.Model):
-#     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
-#     id_compra = models.ForeignKey(Compra,  on_delete=models.CASCADE)
-#     id_ingresso = models.ForeignKey(Ingresso,  on_delete=models.CASCADE)
-
-
-# class CompraProdutos(models.Model):
-#     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
-#     id_compra = models.ForeignKey(Compra,  on_delete=models.CASCADE)
-#     id_produto = models.ForeignKey(ItemLanchonete,  on_delete=models.CASCADE)
+class CompraProdutos(models.Model):
+    id = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    id_compra = models.ForeignKey(Compra,  on_delete=models.CASCADE)
+    id_produto = models.ForeignKey(ItemLanchonete,  on_delete=models.CASCADE)
