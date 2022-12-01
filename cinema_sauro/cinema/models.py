@@ -22,17 +22,17 @@ class Ator(models.Model):
 
 class Atuacao(models.Model): 
     id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
-    ator = models.ForeignKey(Ator,  on_delete=models.CASCADE)
-    filme = models.ForeignKey(Filme,  on_delete=models.CASCADE)
+    ator = models.ForeignKey(Ator,  on_delete=models.CASCADE, null=False)
+    filme = models.ForeignKey(Filme,  on_delete=models.CASCADE, null=False)
 
-# class Cronograma(models.Model):
-#     id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
-#     sala_id = models.ForeignKey(Sala,  on_delete=models.CASCADE)    
-#     filme_id = models.ForeignKey(Filme,  on_delete=models.CASCADE)  
-#     # data_inicio = 
-#     # data_final = 
-#     # horario_inicio = 
-#     # horario_final = 
+class Cronograma(models.Model):
+    id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
+    sala_id = models.ForeignKey(Sala,  on_delete=models.CASCADE, null=False)    
+    filme_id = models.ForeignKey(Filme,  on_delete=models.CASCADE, null=False)  
+    data_inicio = models.DateField(auto_now=False, null=False)
+    data_final =  models.DateField(auto_now=False, null=False)
+    horario_inicio = models.TimeField(auto_now=False, null=False)
+    horario_final = models.TimeField(auto_now=False, null=False)
 
 # class Ingresso(models.Model):
 #     id  = models.UUIDField(primary_key=True, null=False, default=uuid4)
