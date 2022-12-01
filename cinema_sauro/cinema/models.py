@@ -42,8 +42,8 @@ class Ingresso(models.Model):
     data = models.DateField(auto_now=False)
 
 class Cliente(models.Model):
-    cpf  = models.CharField(primary_key=True, null=False)
-    nome = models.CharField(null=False)
+    cpf  = models.CharField(primary_key=True, null=False, max_length=255)
+    nome = models.CharField(null=False, max_length=255)
 
 class ItemLanchonete(models.Model):
     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
@@ -59,7 +59,6 @@ class CompraIngressos(models.Model):
     id = models.UUIDField(primary_key=True, null=False, default=uuid4)
     id_compra = models.ForeignKey(Compra,  on_delete=models.CASCADE)
     id_ingresso = models.ForeignKey(Ingresso,  on_delete=models.CASCADE)
-
 
 class CompraProdutos(models.Model):
     id = models.UUIDField(primary_key=True, null=False, default=uuid4)

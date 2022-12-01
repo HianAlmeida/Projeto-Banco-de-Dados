@@ -45,3 +45,13 @@ def cadastrar_sala(request):
 
     Sala.objects.get_or_create(numero=numero, capacidade=capacidade)
     return Response(status=status.HTTP_201_CREATED)
+
+@api_view(["POST"])
+def cadastrar_ingresso(request):
+    valor = request.data.get("valor")
+    categoria = request.data.get("categoria")
+    data = request.data.get("data")
+    id_cronograma = data.get("id_cronograma")
+    cronograma = Cronograma.objects.get(pk=cronograma_id)
+
+    Ingresso.objects.get_or_create(valor=valor, categoria=categoria, data=data, id_cronograma=id_cronograma)
