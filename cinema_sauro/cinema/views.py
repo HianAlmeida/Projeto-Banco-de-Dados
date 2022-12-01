@@ -45,7 +45,6 @@ def cadastrar_sala(request):
     numero = request.data.get("numero")
     capacidade = request.data.get("capacidade")
 
-<<<<<<< HEAD
     Sala.objects.get_or_create(numero=numero, capacidade=capacidade)
     return Response(status=status.HTTP_201_CREATED)
 
@@ -58,7 +57,6 @@ def cadastrar_ingresso(request):
     cronograma = Cronograma.objects.get(pk=cronograma_id)
 
     Ingresso.objects.get_or_create(valor=valor, categoria=categoria, data=data, id_cronograma=id_cronograma)
-=======
     sala, created = Sala.objects.get_or_create(numero=numero, capacidade=capacidade)
     return Response(data={"sala_id": sala.pk }, status=status.HTTP_201_CREATED)
 
@@ -90,4 +88,3 @@ def cadastrar_compra(request):
     data = request.data
    
 
->>>>>>> f1f33c27dba90afa54f47868b243094fcafdea25
